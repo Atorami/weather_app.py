@@ -1,5 +1,5 @@
 {% if response_data %}
-    <img id="weather-icon" src="" alt="Weather Icon">
+    <img id="weather-icon" src="http://openweathermap.org/img/w/{{ response_data.icon_nr }}.png" alt="Weather Icon">
         <p id="temperature">Temperature: {{ response_data.temp }} </p>
         <p id="pressure">Pressure: {{ response_data.pressure }}</p>
         <p id="humidity">Humidity: {{ response_data.humidity }}</p>
