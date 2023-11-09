@@ -9,6 +9,11 @@ def index(request):
         city = request.POST['location']
         api_url = 'https://api.openweathermap.org/data/2.5/weather?q={}&appid={}'
         response_data = requests.get(api_url.format(city, api_key)).json()
-        return render(request, 'index.html', {'response_data': response_data})
+        print(response_data)
+        weather_data = {
+            'temp': response_data['main']['temp']
+        }
+        print(weather_data)
+        return render(request, 'index.html', {'response_data': weather_data})
     else:
         return render(request, 'index.html')

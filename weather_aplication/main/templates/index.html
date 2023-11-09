@@ -18,12 +18,10 @@
         <button id="search">Search</button>
     </form>
     <div id="weather-info">
-        {% if response_data %}
-            {% include 'weather.html' with response_data='response_data' %}
+            {% include 'weather.html' with response_data=response_data %}
 {#        <img id="weather-icon" src="" alt="Weather Icon">#}
 {#        <p id="temperature">Temperature: </p>#}
 {#        <p id="description">Description: </p>#}
-        {% endif %}
     </div>
 </body>
 </html>
