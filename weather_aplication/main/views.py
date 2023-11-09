@@ -1,22 +1,14 @@
 from django.http import response
 from django.shortcuts import render
-from .forms import WeatherForm
+import requests
 
 
 def index(request):
-    return render(request, 'index.html')
-
-
-def get_info(request):
+    api_key = 'bae0f65dddcd53bf9084c40863033a8f'
     if request.method == 'POST':
-        form = WeatherForm(request.POST)
-
-        if form.is_valid():
-            city = form.cleaned_data['city']
-            api_url = 'https://api.open-meteo.com/v1/forecast'
-            weather_response = request.get(api_url, params={'location': city})
-            response_data = weather_response.json()
-            return render(request, 'index.html', {'form': form, 'weather_data': response_data})
-        else:
-            form = WeatherForm()
-    return render('index.html', {'form': form})
+        city = request.POST['location']
+        api_url = 'https://api.openweathermap.org/data/2.5/weather?q={}&appid={}'
+        response_data = requests.get(api_url.format(city, api_key)).json()
+        return render(request, 'index.html', {'response_data': response_data})
+    else:
+        return render(request, 'index.html')

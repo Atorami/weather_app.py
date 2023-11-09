@@ -1,0 +1,7 @@
+{% if response_data %}
+    <img id="weather-icon" src="" alt="Weather Icon">
+        <p id="temperature">Temperature: {{response_data.temp}} </p>
+        <p id="pressure">Pressure: {{ response_data.pressure }}</p>
+        <p id="humidity">Humidity: {{ response_data.humidity }}</p>
+        <p id="max-min_temp">Max. temp.: {{ response_data.temp_max }} - Min. temp.: {{ response_data.temp_min }}</p>
+{% endif %}

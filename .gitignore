@@ -97,7 +97,7 @@ celerybeat-schedule.*
 *.sage.py
 
 # Environments
-.env
+weather_aplication/weather_aplication/.env
 .venv
 env/
 venv/

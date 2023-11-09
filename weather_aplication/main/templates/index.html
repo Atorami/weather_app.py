@@ -11,18 +11,19 @@
 </head>
 <body>
     <h1>Weather App</h1>
-    <form method="post" action="get_info/" id="search_form">
+    <form method="post" id="search_form">
         {% csrf_token %}
-{#        <label for="location">Enter Location:</label>#}
-{#        <input type="text" id="location"  name="location" placeholder="Enter a city">#}
-        {{ form.location.label_tag }}
-        {{ form.location }}
+        <label for="location">Enter Location:</label>
+        <input type="text" id="location"  name="location" placeholder="Enter a city">
         <button id="search">Search</button>
     </form>
     <div id="weather-info">
-        <img id="weather-icon" src="" alt="Weather Icon">
-        <p id="temperature">Temperature: </p>
-        <p id="description">Description: </p>
+        {% if response_data %}
+            {% include 'weather.html' with response_data='response_data' %}
+{#        <img id="weather-icon" src="" alt="Weather Icon">#}
+{#        <p id="temperature">Temperature: </p>#}
+{#        <p id="description">Description: </p>#}
+        {% endif %}
     </div>
 </body>
 </html>
